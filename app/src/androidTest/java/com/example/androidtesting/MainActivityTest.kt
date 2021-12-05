@@ -24,6 +24,7 @@ class MainActivityTest {
 
 
 
+    //simple ui test
     @Test
     fun mainActivityTest_emptyName_returnsFalse() {
         onView(ViewMatchers.withId(R.id.editTextTextPersonName2)).perform(typeText(""))
