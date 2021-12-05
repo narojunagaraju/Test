@@ -24,6 +24,7 @@ class MainActivityTest {
 
 
 
+    //simple ui test
     @Test
     fun mainActivityTest_emptyName_returnsFalse() {
         onView(ViewMatchers.withId(R.id.editTextTextPersonName2)).perform(typeText(""))
@@ -32,6 +33,7 @@ class MainActivityTest {
         onView(ViewMatchers.withId(R.id.editTextTextPassword2)).perform(typeText("abcde123"))
 
         onView(ViewMatchers.withId(R.id.button)).perform(click())
+
 
     }
 
