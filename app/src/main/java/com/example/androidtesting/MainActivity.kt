@@ -15,10 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         initUI()
-
-
     }
 
     private fun initUI() {
@@ -37,31 +34,36 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    public fun validateRegistrationDetails(
-        name: String,
-        emailAddress: String,
-        password: String,
-        confirmPassword: String
-    ): Boolean {
-        if (name == null || name.isEmpty()|| name.length < 6) {
-            return false
-        }
-        val emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
-                "[a-zA-Z0-9_+&*-]+)*@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                "A-Z]{2,7}$"
+    companion object
+    {
+        fun validateRegistrationDetails(
+            name: String,
+            emailAddress: String,
+            password: String,
+            confirmPassword: String
+        ): Boolean {
+            if (name == null || name.isEmpty()|| name.length < 6) {
+                return false
+            }
+            val emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." +
+                    "[a-zA-Z0-9_+&*-]+)*@" +
+                    "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                    "A-Z]{2,7}$"
 
-        val pat: Pattern = Pattern.compile(emailRegex)
-        if (emailAddress == null ||emailAddress.isEmpty())
-            return false
-        else if (!pat.matcher(emailAddress).matches())
-            return false
-        if (password == null||password.isEmpty() || password.length < 8) {
-            return false
+            val pat: Pattern = Pattern.compile(emailRegex)
+            if (emailAddress == null ||emailAddress.isEmpty())
+                return false
+            else if (!pat.matcher(emailAddress).matches())
+                return false
+            if (password == null||password.isEmpty() || password.length < 8) {
+                return false
+            }
+            if (confirmPassword == null||confirmPassword.isEmpty() || confirmPassword != password) {
+                return false
+            }
+            return true
         }
-        if (confirmPassword == null||confirmPassword.isEmpty() || confirmPassword != password) {
-            return false
-        }
-        return true
     }
+
+
 }
